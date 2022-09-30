@@ -6,5 +6,11 @@ import (
 
 func Migrate() {
 	db := GetInstance().Db
-	db.AutoMigrate(models.Pokemon{})
+	db.AutoMigrate(
+		models.Type{},
+		models.Pokemon{},
+		models.Ability{},
+		models.PokemonStatus{},
+		models.Move{},
+	)
 }
