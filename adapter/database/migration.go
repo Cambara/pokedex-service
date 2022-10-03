@@ -8,9 +8,11 @@ func Migrate() {
 	db := GetInstance().Db
 	db.AutoMigrate(
 		models.Type{},
-		models.Pokemon{},
 		models.Ability{},
-		models.PokemonStatus{},
 		models.Move{},
+		models.TypeBattleProperty{},
+		models.Pokemon{},
+		models.PokemonStatus{},
+		models.PokemonEvolution{},
 	)
 }
