@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/Cambara/pokedex-service/dto/models"
+	"github.com/Cambara/pokedex-service/adapter/database/models"
 )
 
 func Migrate() {
