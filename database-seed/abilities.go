@@ -10,11 +10,21 @@ import (
 )
 
 func importAbilities() {
+	db := database.GetInstance()
+
+	var result []*models.Ability
+	var count int64
+	db.Db.Model(&result).Count(&count)
+
+	if count > 0 {
+		return
+	}
+
 	pokemons := data.GetPokemonData01()
 	abilitiesMap := make(map[string]bool)
 	for _, pokemon := range pokemons {
-		pokemonAbilities := ConvertStringInArray(pokemon.Abilities)
-		for _, pokemonAbility := range pokemonAbilities {
+
+		for _, pokemonAbility := range pokemon.Abilities {
 			key := strings.ToLower(pokemonAbility)
 			_, value := abilitiesMap[key]
 			if !value {
@@ -23,8 +33,6 @@ func importAbilities() {
 		}
 	}
 	abilities := maps.Keys(abilitiesMap)
-
-	db := database.GetInstance()
 
 	for _, ability := range abilities {
 		db.Db.Create(&models.Ability{

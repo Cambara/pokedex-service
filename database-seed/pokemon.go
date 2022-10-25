@@ -8,7 +8,10 @@ import (
 
 func importPokemons() {
 	pokemons := data.GetPokemonData01()
-	for _, pokemon := range pokemons {
-		fmt.Println(pokemon)
-	}
+	fmt.Println(len(pokemons))
+	/*
+		for _, pokemon := range pokemons {
+			fmt.Println(pokemon)
+		}
+	*/
 }
